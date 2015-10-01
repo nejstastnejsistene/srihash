@@ -15,10 +15,13 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Data.Digest.SRI.Lazy
+  exposed-modules:     Data.Digest.SRI
+                     , Data.Digest.SRI.Lucid
   build-depends:       base >= 4.7 && < 5
                      , base64-bytestring
                      , bytestring
+                     , text
+                     , lucid
                      , SHA
   default-language:    Haskell2010
 

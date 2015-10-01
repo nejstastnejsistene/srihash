@@ -1,7 +1,12 @@
-import Data.ByteString.Lazy.Char8 (unpack)
-import Data.Digest.SRI.Lazy
+{-# LANGUAGE OverloadedStrings #-}
+
+import qualified Data.ByteString.Lazy.Char8 as LBS
+
+import Data.Digest.SRI
+import Data.Digest.SRI.Lucid
 
 main :: IO ()
 main = do
-  integrity <- sriHash256File "srihash.cabal"
-  putStrLn (unpack integrity)
+  contents <- LBS.readFile "srihash.cabal"
+  LBS.putStrLn (sriHash contents)
+  print (staticFile "//example.com/srihash.cabal" contents)
